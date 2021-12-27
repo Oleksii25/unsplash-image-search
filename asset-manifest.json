@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/unsplash-image-search/static/css/main.d329ea55.css",
-    "main.js": "/unsplash-image-search/static/js/main.64530a8d.js",
+    "main.js": "/unsplash-image-search/static/js/main.adab2285.js",
     "index.html": "/unsplash-image-search/index.html",
     "main.d329ea55.css.map": "/unsplash-image-search/static/css/main.d329ea55.css.map",
-    "main.64530a8d.js.map": "/unsplash-image-search/static/js/main.64530a8d.js.map"
+    "main.adab2285.js.map": "/unsplash-image-search/static/js/main.adab2285.js.map"
   },
   "entrypoints": [
     "static/css/main.d329ea55.css",
-    "static/js/main.64530a8d.js"
+    "static/js/main.adab2285.js"
   ]
 }
