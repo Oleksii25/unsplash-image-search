@@ -14,4 +14,4 @@ const PageContainer = () => {
   );
 };
 
-export default React.memo(PageContainer);
+export default PageContainer;

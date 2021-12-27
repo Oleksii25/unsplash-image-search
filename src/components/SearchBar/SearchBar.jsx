@@ -42,6 +42,15 @@ const SearchBar = ({ loadImages }) => {
     setValue("");
   }, [loadImages, saveQueries, value]);
 
+  const handleKeyDown = useCallback(
+    (keyCode) => {
+      if (keyCode === "Enter" && value) {
+        handleSearch();
+      }
+    },
+    [handleSearch, value]
+  );
+
   useEffect(() => {
     const queries = getQueriesFromLocalStorage(LOCAL_STORAGE_KEY);
     queries?.length && setSavedQueries(queries);
@@ -60,6 +69,7 @@ const SearchBar = ({ loadImages }) => {
         inputProps={{
           list: "autocomplete",
         }}
+        onKeyDown={({ code }) => handleKeyDown(code)}
       />
       <datalist id="autocomplete">
         {savedQueries.length &&

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import { Typography, Divider } from "@material-ui/core";
 import { CircularProgress } from "@mui/material";
 import SearchBar from "../SearchBar";
@@ -17,33 +17,36 @@ const ImageSearchView = () => {
   const [isImagesFound, setIsImagesFound] = useState(true);
   const [isError, setIsError] = useState(false);
 
-  const loadImages = useCallback(async (value) => {
-    try {
-      setIsLoading(true);
-      setCurrentPage(1);
+  const loadImages = useCallback(
+    async (value) => {
+      try {
+        setIsLoading(true);
+        setCurrentPage(1);
 
-      const { results, total, total_pages } = await getImagesByQuery(value);
+        const { results, total, total_pages } = await getImagesByQuery(value);
 
-      setTotalImages(total);
-      setTotalPages(total_pages);
+        setTotalImages(total);
+        setTotalPages(total_pages);
 
-      if (results) {
-        results.length ? setIsImagesFound(true) : setIsImagesFound(false);
-        isError && setIsError(false);
+        if (results) {
+          results.length ? setIsImagesFound(true) : setIsImagesFound(false);
+          isError && setIsError(false);
 
-        setImages(results);
-      } else {
+          setImages(results);
+        } else {
+          setIsError(true);
+          setImages([]);
+        }
+      } catch (err) {
+        console.log(err);
         setIsError(true);
         setImages([]);
+      } finally {
+        setIsLoading(false);
       }
-    } catch (err) {
-      console.log(err);
-      setIsError(true);
-      setImages([]);
-    } finally {
-      setIsLoading(false);
-    }
-  }, []);
+    },
+    [isError]
+  );
 
   const changePage = useCallback(async (page) => {
     try {
@@ -102,4 +105,4 @@ const ImageSearchView = () => {
   );
 };
 
-export default React.memo(ImageSearchView);
+export default ImageSearchView;
