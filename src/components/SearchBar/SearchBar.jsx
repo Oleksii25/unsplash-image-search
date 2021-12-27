@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { TextField, Button } from "@material-ui/core";
+import PropTypes from "proptypes";
 import {
   saveQuriesToLocalStorage,
   getQueriesFromLocalStorage,
@@ -10,7 +11,7 @@ import { useStyles } from "./styles";
 const SearchBar = ({ loadImages }) => {
   const [value, setValue] = useState("");
   const [savedQueries, setSavedQueries] = useState([]);
-  const { textField, searchButton, searchContainer, dataList } = useStyles();
+  const { textField, searchButton, searchContainer } = useStyles();
 
   const saveQueries = useCallback(() => {
     let newSavedQueries;
@@ -43,7 +44,6 @@ const SearchBar = ({ loadImages }) => {
 
   useEffect(() => {
     const queries = getQueriesFromLocalStorage(LOCAL_STORAGE_KEY);
-    console.log(queries);
     queries?.length && setSavedQueries(queries);
   }, []);
 
@@ -51,7 +51,7 @@ const SearchBar = ({ loadImages }) => {
     <div className={searchContainer}>
       <TextField
         className={textField}
-        placeholder="Image Type"
+        placeholder="Enter search parameter"
         value={value}
         variant="outlined"
         onChange={({ target: { value } }) => setValue(value)}
@@ -73,11 +73,16 @@ const SearchBar = ({ loadImages }) => {
         onClick={handleSearch}
         size="large"
         color="primary"
+        disabled={!value}
       >
-        search images
+        search photo
       </Button>
     </div>
   );
+};
+
+SearchBar.propTypes = {
+  loadImages: PropTypes.func,
 };
 
 export default React.memo(SearchBar);
