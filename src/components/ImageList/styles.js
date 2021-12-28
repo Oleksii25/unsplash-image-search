@@ -1,7 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 const styles = () => ({
-  imageList: { padding: "30px 10px" },
+  imageList: { padding: "30px 20px" },
   imageCard: {
     borderRadius: "25%",
     cursor: "pointer",

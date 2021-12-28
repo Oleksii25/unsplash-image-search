@@ -1,7 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 const styles = () => ({
-  textField: { maxWidth: "450px", backgroundColor: "#fff", flexGrow: 1 },
+  textField: { maxWidth: "450px", backgroundColor: "#fff", flexGrow: 1, borderRadius:4 },
   searchButton: { padding: "0 10px" },
   searchContainer: {
     display: "flex",
