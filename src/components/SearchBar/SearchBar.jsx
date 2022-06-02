@@ -1,17 +1,24 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { TextField, Button } from "@material-ui/core";
+import { TextField, Button, Select, MenuItem } from "@material-ui/core";
 import PropTypes from "proptypes";
 import {
   saveQuriesToLocalStorage,
   getQueriesFromLocalStorage,
 } from "../../helpers";
 import { MAX_QUERIES_LENGTH, LOCAL_STORAGE_KEY } from "../../constants";
+import i18n from 'i18next';
 import { useStyles } from "./styles";
 
 const SearchBar = ({ loadImages }) => {
   const [value, setValue] = useState("");
   const [savedQueries, setSavedQueries] = useState([]);
   const { textField, searchButton, searchContainer } = useStyles();
+  const [language, setLanguage] = useState('en');
+
+  const changeLanguage = ({ value }) => {
+    i18n.changeLanguage(value);
+    setLanguage(value)
+  }
 
   const saveQueries = useCallback(() => {
     let newSavedQueries;
@@ -87,6 +94,16 @@ const SearchBar = ({ loadImages }) => {
       >
         search photo
       </Button>
+      <div>
+        <Select
+          value={language}
+          onChange={({ target }) => changeLanguage(target)}
+        >
+          <MenuItem value={'en'}>EN</MenuItem>
+          <MenuItem value={'ru'}>RU</MenuItem>
+          <MenuItem value={'uk'}>UK</MenuItem>
+        </Select>
+      </div>
     </div>
   );
 };

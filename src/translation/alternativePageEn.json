@@ -1,0 +1,5 @@
+{
+  "first": "first text check alt",
+  "second": "second check with more longer text alt",
+  "third": "third check with variable {{value}}"
+}

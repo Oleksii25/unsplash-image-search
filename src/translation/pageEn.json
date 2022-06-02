@@ -1,0 +1,6 @@
+{
+  "first": "first text check",
+  "second": "second check with more longer text",
+  "third_one": "third check with {{count}} variable",
+  "third_other": "third check with {{count}} variables"
+}
